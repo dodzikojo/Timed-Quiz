@@ -10,9 +10,9 @@
   </head>
 
   <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
+    <div class="scores"><a href="./pages/highscores.html">View Highscores</a></div>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+    <div id="timer">Time: <span id="time">0</span></div>
 
     <div class="wrapper">
       <div id="start-screen" class="start">
@@ -28,6 +28,12 @@
       <div id="questions" class="hide">
         <h2 id="question-title"></h2>
         <div id="choices" class="choices"></div>
+      </div>
+
+      <div id="display-result" class="hide">
+        <hr>
+        <h2 id="result-value">Wrong!</h2>
+
       </div>
 
       <div id="end-screen" class="hide">
