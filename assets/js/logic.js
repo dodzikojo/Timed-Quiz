@@ -60,7 +60,7 @@ function showResponse (event) {
 
   localStorage.setItem('scoreId:' + result.scoreId, result.score)
 
-  location.href = '../../pages/highscores.html'
+  location.href = '././pages/highscores.html'
 }
 
 function randomizeArray (arr) {
@@ -130,9 +130,9 @@ function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) 
         //Check if user has submitted the correct answer
         if (userAnswerIndex == correntAnswerIndex) {
           resultValueTextEl.textContent = 'Correct!'
-          playAudio('../../assets/sfx/correct.wav')
+          playAudio('././assets/sfx/correct.wav')
         } else {
-          playAudio('../../assets/sfx/incorrect.wav')
+          playAudio('././assets/sfx/incorrect.wav')
           resultValueTextEl.textContent = 'Wrong! (-10 seconds)'
           quizTimer = quizTimer - 10 
         }
