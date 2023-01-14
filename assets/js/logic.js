@@ -49,15 +49,21 @@ function showResponse (event) {
   const result = {
     initials: initialsTextEl.value,
     score: quizTimer,
+    scoreId: initials+initialsTextEl.value.trim(),
     dateTime: new Date().toLocaleString()
   }
 
   localStorage.setItem(
-    "score: "+result.initials + '_' + result.dateTime,
+    'score: ' + result.initials + '_' + result.dateTime,
     JSON.stringify(result)
   )
+  
+  localStorage.setItem(
+    result.scoreId,
+    result.score
+  )
 
-    location.href = "../pages/highscores.html"
+  location.href = '../pages/highscores.html'
 }
 
 function randomizeArray (arr) {
@@ -143,6 +149,30 @@ function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) 
   }
 }
 
+
+
+//Create Boostrap Accordion
+function createShowAnswers (questionText, answerText) {
+  let mainAccordionDivEl = document.getElementById('explanation-screen')
+
+  let questionTextEl = document.createElement('h6')
+    questionTextEl.innerHTML = questionText
+
+
+  let answerTextEl = document.createElement('p');
+  answerTextEl.innerHTML = answerText
+
+  let answerHeadingEl = document.createElement("h5");
+  answerHeadingEl.textContent = "Answer:"
+
+
+  mainAccordionDivEl.appendChild(questionTextEl)
+  mainAccordionDivEl.appendChild(answerHeadingEl)
+  mainAccordionDivEl.appendChild(answerTextEl)
+  mainAccordionDivEl.appendChild(document.createElement('hr'))
+
+}
+
 //#region TestingCode
 // getSetAllQuestions_Answers()
 
@@ -199,8 +229,6 @@ function countdown () {
       endScreenDivEl.setAttribute('class', '')
 
       finalScoreTextEl.textContent = quizTimer
-      //   location.href = "../pages/highscores.html"
-      // displayMessage();
     }
 
     if (questionsCounter > allQuestions_Answers.length) {
@@ -211,7 +239,11 @@ function countdown () {
       endScreenDivEl.setAttribute('class', '')
 
       finalScoreTextEl.textContent = quizTimer
+
+      createShowAnswers("Question Title", "Answer")
     }
+
+   
 
     //
   }, 1000)

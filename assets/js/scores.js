@@ -3,7 +3,6 @@ let clearBtnEl = document.getElementById('clear')
 let scoreTableEl = document.getElementById('score-table')
 const items = { localStorage }
 
-
 counter = 0
 // iterate localStorage
 for (var i = 0; i < localStorage.length; i++) {
@@ -14,8 +13,6 @@ for (var i = 0; i < localStorage.length; i++) {
   if (key.toLocaleLowerCase().includes('score:')) {
     var value = localStorage.getItem(key)
 
-    // console.log(value);
-
     // let rowNumberColumnEl = document.createElement('td')
     let intialColumnEl = document.createElement('td')
     let scoreColumnEl = document.createElement('td')
@@ -23,10 +20,8 @@ for (var i = 0; i < localStorage.length; i++) {
 
     var result = JSON.parse(value)
 
-   
     for (let index = 0; index < result.length; index++) {
-        console.log(result[index])
-        
+      console.log(result[index])
     }
 
     row = scoreTableEl.insertRow()
@@ -45,8 +40,10 @@ for (var i = 0; i < localStorage.length; i++) {
 
 clearBtnEl.addEventListener('click', function (event) {
   localStorage.clear()
-  sc
-  while (scoreTableEl.firstChild) {
-    scoreTableEl.removeChild(scoreTableEl.lastChild)
-  }
+
+  location.href = '../pages/highscores.html'
 })
+
+
+
+

@@ -96,3 +96,12 @@ li:nth-child(odd) {
  font-weight: lighter;
  color: grey;
 }
+
+button:hover {
+  /* background-color: white !important; */
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: white !important;
+}
