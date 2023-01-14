@@ -9,16 +9,16 @@ export let allQuestions_Answers = [
     ]),
     "JavaScript is not a pure OOP's (object oriented programming) based languages such as PHP, java or many other languages, although it is an object-based language. It is not OOP's based language, because it doesn't have three basic properties of object-oriented programming languages, such as polymorphism, encapsulation, and inheritance."
   ],
-//   [
-//     'Which one of the following also known as Conditional Expression:',
-//     new Map([
-//       ['Alternative to if-else', false],
-//       ['Switch statement', false],
-//       ['If-then-else statement', false],
-//       ['Immediate if', true]
-//     ]),
-//     'A conditional expression can only evaluate two things, which either true or false, that are purely based on the evaluation of the condition'
-//   ],
+  [
+    'Which one of the following also known as Conditional Expression:',
+    new Map([
+      ['Alternative to if-else', false],
+      ['Switch statement', false],
+      ['If-then-else statement', false],
+      ['Immediate if', true]
+    ]),
+    'A conditional expression can only evaluate two things, which either true or false, that are purely based on the evaluation of the condition'
+  ],
   [
     'Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?',
     new Map([
@@ -39,29 +39,29 @@ export let allQuestions_Answers = [
     ]),
     'The "function" and "var" both are the Declaration statements. These both are used for defining, and declaring variable, function in anywhere in the program.'
   ],
-//   [
-//     'In JavaScript the x===y statement implies that:',
-//     new Map([
-//       [
-//         'Both x and y are equal in value, type and reference address as well.',
-//         false
-//       ],
-//       ['Both are x and y are equal in value only.', false],
-//       ['Both are equal in the value and data type.', true],
-//       ['Both are not same at all.', false]
-//     ]),
-//     'The "===" statement are called strict comparison which only gets true only if the type and content of both the operand are strictly same.'
-//   ],
-//   [
-//     'In JavaScript, what will be used for calling the function definition expression:',
-//     new Map([
-//       ['Function prototype', false],
-//       ['Function literal', true],
-//       ['Function calling', false],
-//       ['Function declaration', false]
-//     ]),
-//     'A function definition expression is a kind of "function literal\' just like as the object initializer is a kind of "object literal". The function definition expression (or we can say a function literal) consists of the keyword Function, followed by the set of identifiers(or parameters names) that are separated by commas inside the parenthesis, and a small block of JavaScript code(which we normally called function body/definition) enclosed in the curly braces.'
-//   ],
+  [
+    'In JavaScript the x===y statement implies that:',
+    new Map([
+      [
+        'Both x and y are equal in value, type and reference address as well.',
+        false
+      ],
+      ['Both are x and y are equal in value only.', false],
+      ['Both are equal in the value and data type.', true],
+      ['Both are not same at all.', false]
+    ]),
+    'The "===" statement are called strict comparison which only gets true only if the type and content of both the operand are strictly same.'
+  ],
+  [
+    'In JavaScript, what will be used for calling the function definition expression:',
+    new Map([
+      ['Function prototype', false],
+      ['Function literal', true],
+      ['Function calling', false],
+      ['Function declaration', false]
+    ]),
+    'A function definition expression is a kind of "function literal\' just like as the object initializer is a kind of "object literal". The function definition expression (or we can say a function literal) consists of the keyword Function, followed by the set of identifiers(or parameters names) that are separated by commas inside the parenthesis, and a small block of JavaScript code(which we normally called function body/definition) enclosed in the curly braces.'
+  ],
 //   [
 //     'Which of the following one is the property of the primary expression:',
 //     new Map([
@@ -82,16 +82,16 @@ export let allQuestions_Answers = [
 //     ]),
 //     'The given pattern is applied on the string "text" enclosed in the parenthesis.'
 //   ],
-//   [
-//     'Which one of the following is not a keyword:',
-//     new Map([
-//       ['if', false],
-//       ['with', false],
-//       ['debugger', false],
-//       ['use strict', true]
-//     ]),
-//     'The "use strict" is a type of directive which was introduced in ECMAScript5 and as we all know that directives are not the statements because they do not include any language keywords.'
-//   ],
+  [
+    'Which one of the following is not a keyword:',
+    new Map([
+      ['if', false],
+      ['with', false],
+      ['debugger', false],
+      ['use strict', true]
+    ]),
+    'The "use strict" is a type of directive which was introduced in ECMAScript5 and as we all know that directives are not the statements because they do not include any language keywords.'
+  ],
   [
     'Which one of the following symbol is used for creating comments in the javascript:',
     new Map([

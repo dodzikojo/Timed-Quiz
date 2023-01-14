@@ -26,6 +26,8 @@ let startScreenDivEl = document.getElementById('start-screen')
 let questionScreenDivEl = document.getElementById('questions')
 let displayResultDivEl = document.getElementById('display-result')
 
+var submitBtnEl = document.querySelector('#submit')
+
 let endScreenDivEl = document.getElementById('end-screen')
 
 startQuizBtnEl.addEventListener('click', countdown)
@@ -36,6 +38,27 @@ choicesListEl.addEventListener('click', function (event) {
   }
   setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter++)
 })
+
+submitBtnEl.addEventListener('click', showResponse)
+
+function showResponse (event) {
+  // Prevent default action
+  event.preventDefault()
+  let initialsTextEl = document.getElementById('initials')
+
+  const result = {
+    initials: initialsTextEl.value,
+    score: quizTimer,
+    dateTime: new Date().toLocaleString()
+  }
+
+  localStorage.setItem(
+    "score: "+result.initials + '_' + result.dateTime,
+    JSON.stringify(result)
+  )
+
+    location.href = "../pages/highscores.html"
+}
 
 function randomizeArray (arr) {
   var randomArr = []
