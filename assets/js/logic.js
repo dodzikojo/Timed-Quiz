@@ -60,7 +60,7 @@ function showResponse (event) {
 
   localStorage.setItem('scoreId:' + result.scoreId, result.score)
 
-  location.href = '././pages/highscores.html'
+  location.href = 'pages/highscores.html'
 }
 
 function randomizeArray (arr) {
