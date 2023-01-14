@@ -32,6 +32,8 @@ let endScreenDivEl = document.getElementById('end-screen')
 
 startQuizBtnEl.addEventListener('click', countdown)
 
+getTimerEl.textContent = quizTimer;
+
 choicesListEl.addEventListener('click', function (event) {
   while (choicesListEl.firstChild) {
     choicesListEl.removeChild(choicesListEl.lastChild)
@@ -49,19 +51,14 @@ function showResponse (event) {
   const result = {
     initials: initialsTextEl.value,
     score: quizTimer,
-    scoreId: initials+initialsTextEl.value.trim(),
+    scoreId:
+      initialsTextEl.value.trim() + '_' + new Date().toLocaleDateString(),
     dateTime: new Date().toLocaleString()
   }
 
-  localStorage.setItem(
-    'score: ' + result.initials + '_' + result.dateTime,
-    JSON.stringify(result)
-  )
-  
-  localStorage.setItem(
-    result.scoreId,
-    result.score
-  )
+  localStorage.setItem('score: ' + result.scoreId, JSON.stringify(result))
+
+  localStorage.setItem('scoreId:' + result.scoreId, result.score)
 
   location.href = '../pages/highscores.html'
 }
@@ -133,9 +130,11 @@ function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) 
         //Check if user has submitted the correct answer
         if (userAnswerIndex == correntAnswerIndex) {
           resultValueTextEl.textContent = 'Correct!'
+          playAudio('../../assets/sfx/correct.wav')
         } else {
+          playAudio('../../assets/sfx/incorrect.wav')
           resultValueTextEl.textContent = 'Wrong! (-10 seconds)'
-          quizTimer = quizTimer - 10
+          quizTimer = quizTimer - 10 
         }
       })
 
@@ -149,29 +148,6 @@ function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) 
   }
 }
 
-
-
-//Create Boostrap Accordion
-function createShowAnswers (questionText, answerText) {
-  let mainAccordionDivEl = document.getElementById('explanation-screen')
-
-  let questionTextEl = document.createElement('h6')
-    questionTextEl.innerHTML = questionText
-
-
-  let answerTextEl = document.createElement('p');
-  answerTextEl.innerHTML = answerText
-
-  let answerHeadingEl = document.createElement("h5");
-  answerHeadingEl.textContent = "Answer:"
-
-
-  mainAccordionDivEl.appendChild(questionTextEl)
-  mainAccordionDivEl.appendChild(answerHeadingEl)
-  mainAccordionDivEl.appendChild(answerTextEl)
-  mainAccordionDivEl.appendChild(document.createElement('hr'))
-
-}
 
 //#region TestingCode
 // getSetAllQuestions_Answers()
@@ -200,11 +176,17 @@ function createShowAnswers (questionText, answerText) {
 // }
 //#endregion
 
+function playAudio (url) {
+  new Audio(url).play()
+}
+
+
+
+
 function countdown () {
   let timerDivEl = document.getElementById('timer')
   randomizedQuestionsArray = randomizeArray(allQuestions_Answers)
 
-  console.log(randomizedQuestionsArray)
 
   startScreenDivEl.setAttribute('class', 'hide')
   questionScreenDivEl.setAttribute('class', '')
@@ -240,10 +222,7 @@ function countdown () {
 
       finalScoreTextEl.textContent = quizTimer
 
-      createShowAnswers("Question Title", "Answer")
     }
-
-   
 
     //
   }, 1000)

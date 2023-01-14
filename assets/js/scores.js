@@ -20,9 +20,9 @@ for (var i = 0; i < localStorage.length; i++) {
 
     var result = JSON.parse(value)
 
-    for (let index = 0; index < result.length; index++) {
-      console.log(result[index])
-    }
+    // for (let index = 0; index < result.length; index++) {
+    //   console.log(result[index])
+    // }
 
     row = scoreTableEl.insertRow()
 
@@ -46,4 +46,29 @@ clearBtnEl.addEventListener('click', function (event) {
 
 
 
+// getLocalStorageItems()
 
+// //get all localstorage items starting with "scoreId"
+// function getLocalStorageItems () {
+//   let all = []
+//   // iterate localStorage
+//   for (var i = 0; i < localStorage.length; i++) {
+//     // set iteration key name
+//     var key = localStorage.key(i)
+
+//     // use key name to retrieve the corresponding value
+//     if (key.toLocaleLowerCase().includes('scoreid:')) {
+//       var value = localStorage.getItem(key)
+
+//       console.log(value)
+//       const sample = {
+//         scoreId: key,
+//         score: value,
+//       }
+
+//       all.push(sample);
+//     }
+//   }
+
+//   console.log(all);
+// }

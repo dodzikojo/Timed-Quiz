@@ -19,39 +19,39 @@ export let allQuestions_Answers = [
     ]),
     'A conditional expression can only evaluate two things, which either true or false, that are purely based on the evaluation of the condition'
   ],
-//   [
-//     'Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?',
-//     new Map([
-//       ['slice()', false],
-//       ['split()', false],
-//       ['substr()', true],
-//       ['search()', false]
-//     ]),
-//     'The method "Subtr()" in the javascript is used to return the characters in the string starting at the specified position via the specified number of the characters.'
-//   ],
-//   [
-//     'The "function" and " var" are known as:',
-//     new Map([
-//       ['Keywords', false],
-//       ['Data types', false],
-//       ['Declaration statements', true],
-//       ['Prototypes', false]
-//     ]),
-//     'The "function" and "var" both are the Declaration statements. These both are used for defining, and declaring variable, function in anywhere in the program.'
-//   ],
-//   [
-//     'In JavaScript the x===y statement implies that:',
-//     new Map([
-//       [
-//         'Both x and y are equal in value, type and reference address as well.',
-//         false
-//       ],
-//       ['Both are x and y are equal in value only.', false],
-//       ['Both are equal in the value and data type.', true],
-//       ['Both are not same at all.', false]
-//     ]),
-//     'The "===" statement are called strict comparison which only gets true only if the type and content of both the operand are strictly same.'
-//   ],
+  [
+    'Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?',
+    new Map([
+      ['slice()', false],
+      ['split()', false],
+      ['substr()', true],
+      ['search()', false]
+    ]),
+    'The method "Subtr()" in the javascript is used to return the characters in the string starting at the specified position via the specified number of the characters.'
+  ],
+  [
+    'The "function" and " var" are known as:',
+    new Map([
+      ['Keywords', false],
+      ['Data types', false],
+      ['Declaration statements', true],
+      ['Prototypes', false]
+    ]),
+    'The "function" and "var" both are the Declaration statements. These both are used for defining, and declaring variable, function in anywhere in the program.'
+  ],
+  [
+    'In JavaScript the x===y statement implies that:',
+    new Map([
+      [
+        'Both x and y are equal in value, type and reference address as well.',
+        false
+      ],
+      ['Both are x and y are equal in value only.', false],
+      ['Both are equal in the value and data type.', true],
+      ['Both are not same at all.', false]
+    ]),
+    'The "===" statement are called strict comparison which only gets true only if the type and content of both the operand are strictly same.'
+  ],
 //   [
 //     'In JavaScript, what will be used for calling the function definition expression:',
 //     new Map([
