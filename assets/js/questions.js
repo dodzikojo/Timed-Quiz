@@ -52,44 +52,46 @@ export let allQuestions_Answers = [
     ]),
     'The "===" statement are called strict comparison which only gets true only if the type and content of both the operand are strictly same.'
   ],
-//   [
-//     'In JavaScript, what will be used for calling the function definition expression:',
-//     new Map([
-//       ['Function prototype', false],
-//       ['Function literal', true],
-//       ['Function calling', false],
-//       ['Function declaration', false]
-//     ]),
-//     'A function definition expression is a kind of "function literal\' just like as the object initializer is a kind of "object literal". The function definition expression (or we can say a function literal) consists of the keyword Function, followed by the set of identifiers(or parameters names) that are separated by commas inside the parenthesis, and a small block of JavaScript code(which we normally called function body/definition) enclosed in the curly braces.'
-//   ],
-//   [
-//     'Which one of the following is not a keyword:',
-//     new Map([
-//       ['if', false],
-//       ['with', false],
-//       ['debugger', false],
-//       ['use strict', true]
-//     ]),
-//     'The "use strict" is a type of directive which was introduced in ECMAScript5 and as we all know that directives are not the statements because they do not include any language keywords.'
-//   ],
-//   [
-//     'Which one of the following symbol is used for creating comments in the javascript:',
-//     new Map([
-//       ['\\\\', false],
-//       ['//', true],
-//       ['\\* *\\', false],
-//       ['\\* */', false]
-//     ]),
-//     'The single line comments always starts by the "//" and any text written in between the "// "and the end of the line is considered as comment and ignored by the JavaScript.'
-//   ],
-//   [
-//     'Which one of the following is not considered as "statement" in the JavaScript?',
-//     new Map([
-//       ['use strict', true],
-//       ['debugger', false],
-//       ['if', false],
-//       ['with', false]
-//     ]),
-//     'In JavaScript, the "use strict" is not a keyword because it not includes any language keywords. However, it is a directive that is introduced in the ECMAscript5 version of the javascript. The "use strict" can be used only in the beginning of the script or in the beginning of the function where no actual keywords are mentioned yet.'
-//   ]
+  [
+    'In JavaScript, what will be used for calling the function definition expression:',
+    new Map([
+      ['Function prototype', false],
+      ['Function literal', true],
+      ['Function calling', false],
+      ['Function declaration', false]
+    ]),
+    'A function definition expression is a kind of "function literal\' just like as the object initializer is a kind of "object literal". The function definition expression (or we can say a function literal) consists of the keyword Function, followed by the set of identifiers(or parameters names) that are separated by commas inside the parenthesis, and a small block of JavaScript code(which we normally called function body/definition) enclosed in the curly braces.'
+  ],
+  [
+    'Which one of the following is not a keyword:',
+    new Map([
+      ['if', false],
+      ['with', false],
+      ['debugger', false],
+      ['use strict', true]
+    ]),
+    'The "use strict" is a type of directive which was introduced in ECMAScript5 and as we all know that directives are not the statements because they do not include any language keywords.'
+  ],
+  [
+    'Which one of the following symbol is used for creating comments in the javascript:',
+    new Map([
+      ['\\\\', false],
+      ['//', true],
+      ['\\* *\\', false],
+      ['\\* */', false]
+    ]),
+    'The single line comments always starts by the "//" and any text written in between the "// "and the end of the line is considered as comment and ignored by the JavaScript.'
+  ],
+  [
+    'Which one of the following is not considered as "statement" in the JavaScript?',
+    new Map([
+      ['use strict', true],
+      ['debugger', false],
+      ['if', false],
+      ['with', false]
+    ]),
+    'In JavaScript, the "use strict" is not a keyword because it not includes any language keywords. However, it is a directive that is introduced in the ECMAscript5 version of the javascript. The "use strict" can be used only in the beginning of the script or in the beginning of the function where no actual keywords are mentioned yet.'
+  ]
 ]
+
+
