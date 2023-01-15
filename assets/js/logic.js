@@ -1,7 +1,8 @@
 import { allQuestions_Answers } from '../js/questions.js'
+import { quizResult } from '../js/global-class.js'
 
 class questionAnswers {
-  constructor (
+  constructor(
     questionNumber,
     questionTitle,
     multipleChoices_Answer,
@@ -19,6 +20,8 @@ class questionAnswers {
     this.explanation = explanation
   }
 }
+
+
 
 
 let quizTimer = 100
@@ -41,13 +44,6 @@ let displayResultDivEl = document.getElementById('display-result')
 let expanderDivEl = document.getElementById('result-expander')
 
 let clockTickAudioEl = document.getElementById('clock-ticker')
-// let clockTickAudioEl = document.createElement('audio')
-// clockTickAudioEl.setAttribute("type","audio/mpeg")
-// clockTickAudioEl.setAttribute("display","none")
-// clockTickAudioEl.setAttribute("source","././assets/sfx/ticking-clock.mp3")
-
-// questionScreenDivEl.appendChild(clockTickAudioEl);
-// clockTickAudioEl.play();
 
 var submitBtnEl = document.querySelector('#submit')
 
@@ -66,27 +62,30 @@ choicesListEl.addEventListener('click', function (event) {
 
 submitBtnEl.addEventListener('click', showResponse)
 
-function showResponse (event) {
+function showResponse(event) {
   // Prevent default action
   event.preventDefault()
   let initialsTextEl = document.getElementById('initials')
 
-  const result = {
-    initials: initialsTextEl.value,
-    score: quizTimer,
-    scoreId:
-      initialsTextEl.value.trim() + '_' + new Date().toLocaleDateString(),
-    dateTime: new Date().toLocaleString()
-  }
+  let newQuizResult = new quizResult(initialsTextEl.value.trim(), quizTimer)
+  // const result = {
+  //   initials: initialsTextEl.value,
+  //   score: quizTimer,
+  //   scoreId:
+  //     initialsTextEl.value.trim() + '_' + new Date().toLocaleDateString(),
+  //   dateTime: new Date().toLocaleString()
+  // }
 
-  localStorage.setItem('score: ' + result.scoreId, JSON.stringify(result))
+  console.log(newQuizResult)
 
-  localStorage.setItem('scoreId:' + result.scoreId, result.score)
+  localStorage.setItem(newQuizResult.id, JSON.stringify(newQuizResult))
+
+  // localStorage.setItem('scoreId:' + result.scoreId, result.score)
 
   location.href = '././pages/highscores.html'
 }
 
-function randomizeArray (arr) {
+function randomizeArray(arr) {
   var randomArr = []
 
   for (let index = 0; index < arr.length; index++) {
@@ -98,7 +97,7 @@ function randomizeArray (arr) {
   })
 }
 
-function randomizeArrayMap (map) {
+function randomizeArrayMap(map) {
   var randomArrMap = []
 
   for (var [key, value] of map.entries()) {
@@ -111,7 +110,7 @@ function randomizeArrayMap (map) {
   })
 }
 
-function createQuestion_AnswerCards (
+function createQuestion_AnswerCards(
   questionNumber,
   questionTitle,
   userAnswer,
@@ -201,7 +200,7 @@ function createQuestion_AnswerCards (
   expanderDivEl.appendChild(mainCard)
 }
 
-function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) {
+function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
   if (questionsCounter >= allQuestions_Answers.length) {
   } else {
     let newQuestionAnswer = new questionAnswers()
@@ -218,8 +217,6 @@ function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) 
       newQuestionAnswer.multipleChoices_Answer
     )
     choicesListEl = document.getElementById('choices')
-
-    // console.log("here you go: "+newQuestionAnswer.multipleChoices_Answer);
 
     questionTextEl.textContent = newQuestionAnswer.questionTitle
 
@@ -310,15 +307,15 @@ function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) 
 // }
 //#endregion
 
-function playAudio (url) {
+function playAudio(url) {
   new Audio(url).play()
 }
 
-function pauseAudio (url) {
+function pauseAudio(url) {
   new Audio(url).pause()
 }
 
-function countdown () {
+function countdown() {
   let timerDivEl = document.getElementById('timer')
   randomizedQuestionsArray = randomizeArray(allQuestions_Answers)
 
@@ -379,3 +376,5 @@ function countdown () {
     //
   }, 1000)
 }
+
+
