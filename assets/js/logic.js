@@ -10,15 +10,16 @@ class questionAnswers {
     correctAnswer,
     explanation
   ) {
-    ;(questionNumber = questionNumber),
-      (questionTitle = questionTitle),
-      (multipleChoices_Answer = multipleChoices_Answer),
-      (isUserAnswerCorrect = isUserAnswerCorrect),
-      (userAnswer = userAnswer),
-      (correctAnswer = correctAnswer),
-      (explanation = explanation)
+    this.questionNumber = questionNumber
+    this.questionTitle = questionTitle
+    this.multipleChoices_Answer = multipleChoices_Answer
+    this.isUserAnswerCorrect = isUserAnswerCorrect
+    this.userAnswer = userAnswer
+    this.correctAnswer = correctAnswer
+    this.explanation = explanation
   }
 }
+
 
 let quizTimer = 100
 let randomizedQuestionsArray
