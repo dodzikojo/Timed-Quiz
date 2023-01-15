@@ -66,6 +66,10 @@ li:nth-child(odd) {
   text-align: center;
 }
 
+.left-align {
+  text-align: left;
+}
+
 .scores {
   position: absolute;
   top: 10px;
@@ -97,11 +101,11 @@ li:nth-child(odd) {
  color: grey;
 }
 
-button:hover {
-  /* background-color: white !important; */
+.accordion-button:hover {
+  background-color: white !important;
 }
 
-.accordion-button:focus {
-  z-index: 3;
-  border-color: white !important;
+
+.accordion-body {
+  padding: 5px !important;
 }
