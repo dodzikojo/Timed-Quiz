@@ -26,13 +26,23 @@ let startScreenDivEl = document.getElementById('start-screen')
 let questionScreenDivEl = document.getElementById('questions')
 let displayResultDivEl = document.getElementById('display-result')
 
+let clockTickAudioEl = document.getElementById('clock-ticker')
+// let clockTickAudioEl = document.createElement('audio')
+// clockTickAudioEl.setAttribute("type","audio/mpeg")
+// clockTickAudioEl.setAttribute("display","none")
+// clockTickAudioEl.setAttribute("source","././assets/sfx/ticking-clock.mp3")
+
+// questionScreenDivEl.appendChild(clockTickAudioEl);
+// clockTickAudioEl.play();
+
+
 var submitBtnEl = document.querySelector('#submit')
 
 let endScreenDivEl = document.getElementById('end-screen')
 
 startQuizBtnEl.addEventListener('click', countdown)
 
-getTimerEl.textContent = quizTimer;
+getTimerEl.textContent = quizTimer
 
 choicesListEl.addEventListener('click', function (event) {
   while (choicesListEl.firstChild) {
@@ -134,7 +144,7 @@ function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) 
         } else {
           playAudio('././assets/sfx/incorrect.wav')
           resultValueTextEl.textContent = 'Wrong! (-10 seconds)'
-          quizTimer = quizTimer - 10 
+          quizTimer = quizTimer - 10
         }
       })
 
@@ -147,7 +157,6 @@ function setSingleQuestion_Answers (randomizedQuestionsArray, questionsCounter) 
     }
   }
 }
-
 
 //#region TestingCode
 // getSetAllQuestions_Answers()
@@ -180,13 +189,13 @@ function playAudio (url) {
   new Audio(url).play()
 }
 
-
-
+function pauseAudio (url) {
+    new Audio(url).pause()
+  }
 
 function countdown () {
   let timerDivEl = document.getElementById('timer')
   randomizedQuestionsArray = randomizeArray(allQuestions_Answers)
-
 
   startScreenDivEl.setAttribute('class', 'hide')
   questionScreenDivEl.setAttribute('class', '')
@@ -200,11 +209,17 @@ function countdown () {
   var timeInterval = setInterval(function () {
     // YOUR CODE HERE
     getTimerEl.textContent = quizTimer--
+
+    if (quizTimer < 10) {
+        clockTickAudioEl.play()
+    }
+
     if (quizTimer < 30) {
       timerDivEl.style.color = 'red'
       timerDivEl.style.fontWeight = 'bold'
     }
     if (quizTimer == 0) {
+        clockTickAudioEl.pause()
       getTimerEl.textContent = '0'
       clearInterval(timeInterval)
       questionScreenDivEl.setAttribute('class', 'hide')
@@ -221,7 +236,6 @@ function countdown () {
       endScreenDivEl.setAttribute('class', '')
 
       finalScoreTextEl.textContent = quizTimer
-
     }
 
     //

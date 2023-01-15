@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="/assets/images/favicon.png">
   <title>Coding Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -12,6 +13,7 @@
 </head>
 
 <body>
+
   <div class="scores"><a href="./pages/highscores.html">View Highscores</a></div>
 
   <div id="timer">Time: <span id="time">0</span></div>
@@ -27,7 +29,10 @@
       <button id="start">Start Quiz</button>
     </div>
 
+    <audio id="clock-ticker" class="hide" type="audio/mpeg" src="././assets/sfx/ticking-clock.mp3"  loop></audio>
+
     <div id="questions" class="hide">
+     
       <h2 id="question-title"></h2>
       <div id="choices" class="choices"></div>
     </div>
@@ -50,7 +55,7 @@
 
 
 
-    <!-- <div id="feedback" class="feedback hide"></div> -->
+    <div id="feedback" class="feedback hide"></div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
