@@ -33,7 +33,7 @@ export let allQuestions_Answers = [
       ['Immediate if', true]
     ]),
     'A conditional expression can only evaluate two things, which either true or false, that are purely based on the evaluation of the condition'
-  ],
+  ]
 ```
 
 * Each generated question is store as an object based on a define "questionAnswers" class. 
@@ -63,6 +63,7 @@ export let allQuestions_Answers = [
     ![preview](/preview/explanation-page.png)
 
 * After quiz is complete, a highscores table display the various scores along with initials and date and time the quiz was performed.
+  
     ![preview](/preview/highscores.png)
 
 ## Preview
