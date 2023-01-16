@@ -21,14 +21,23 @@ class questionAnswers {
   }
 }
 
+//#region testing nMap
+// const n = "90AB"
+// const nMap = {
+//   "90AB": ["userInitial", "userScore", new Date().toDateString() + " " + new Date().toLocaleTimeString()],
+//   "90AB": 'res-2',
+//   "90AB": 'res-3'
+// }
 
 
+// const result = nMap[ n ]
+// console.log(result)
+//#endregion
 
-let quizTimer = 100
+let quizTimer = 20
 let randomizedQuestionsArray
 let questionsCounter = 0
 let answeredQuestions = []
-
 let getTimerEl = document.getElementById('time')
 let answerBtnEl
 let startQuizBtnEl = document.getElementById('start')
@@ -36,17 +45,12 @@ let questionTextEl = document.getElementById('question-title')
 let choicesListEl = document.getElementById('choices')
 let resultValueTextEl = document.getElementById('result-value')
 let finalScoreTextEl = document.getElementById('final-score')
-
 let startScreenDivEl = document.getElementById('start-screen')
 let questionScreenDivEl = document.getElementById('questions')
 let displayResultDivEl = document.getElementById('display-result')
-
 let expanderDivEl = document.getElementById('result-expander')
-
 let clockTickAudioEl = document.getElementById('clock-ticker')
-
 var submitBtnEl = document.querySelector('#submit')
-
 let endScreenDivEl = document.getElementById('end-screen')
 
 startQuizBtnEl.addEventListener('click', countdown)
@@ -68,19 +72,10 @@ function showResponse(event) {
   let initialsTextEl = document.getElementById('initials')
 
   let newQuizResult = new quizResult(initialsTextEl.value.trim(), quizTimer)
-  // const result = {
-  //   initials: initialsTextEl.value,
-  //   score: quizTimer,
-  //   scoreId:
-  //     initialsTextEl.value.trim() + '_' + new Date().toLocaleDateString(),
-  //   dateTime: new Date().toLocaleString()
-  // }
 
   console.log(newQuizResult)
 
   localStorage.setItem(newQuizResult.id, JSON.stringify(newQuizResult))
-
-  // localStorage.setItem('scoreId:' + result.scoreId, result.score)
 
   location.href = '././pages/highscores.html'
 }
@@ -228,7 +223,7 @@ function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
       answerBtnEl.setAttribute('type', 'button')
       answerBtnEl.setAttribute(
         'question-order',
-        newQuestionAnswer.questionOrder
+        questionsCounter
       )
 
       //Get Correct Answer Index
@@ -253,7 +248,12 @@ function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
           newQuestionAnswer.isUserAnswerCorrect = false
           playAudio('././assets/sfx/incorrect.wav')
           resultValueTextEl.textContent = 'Wrong! (-10 seconds)'
-          quizTimer = quizTimer - 10
+          if (quizTimer > 10) {
+            quizTimer = quizTimer - 10
+          }
+          else {
+            quizTimer = 0
+          }
         }
 
         let indexCounter = 0
@@ -265,6 +265,7 @@ function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
           }
           indexCounter++
         }
+        answeredQuestions.push(newQuestionAnswer)
       })
 
       setTimeout(function () {
@@ -274,9 +275,7 @@ function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
       answerBtnEl.textContent = answerCounter++ + '. ' + value[0]
       choicesListEl.appendChild(answerBtnEl)
     }
-
-    // newQuestionAnswer.correctAnswer = "ABCD";
-    answeredQuestions.push(newQuestionAnswer)
+    
   }
 }
 
@@ -329,7 +328,7 @@ function countdown() {
   )
 
   var timeInterval = setInterval(function () {
-    // YOUR CODE HERE
+   
     getTimerEl.textContent = quizTimer--
 
     if (quizTimer < 10) {
@@ -340,21 +339,24 @@ function countdown() {
       timerDivEl.style.color = 'red'
       timerDivEl.style.fontWeight = 'bold'
     }
-    if (quizTimer == 0) {
-      clockTickAudioEl.pause()
-      getTimerEl.textContent = '0'
-      clearInterval(timeInterval)
-      questionScreenDivEl.setAttribute('class', 'hide')
-      endScreenDivEl.setAttribute('class', '')
 
-      finalScoreTextEl.textContent = quizTimer
+    if (quizTimer < 0) {
+      quizTimer = 0
     }
 
-    if (questionsCounter > allQuestions_Answers.length) {
+    if (questionsCounter > allQuestions_Answers.length || quizTimer <= 0) {
       clearInterval(timeInterval)
+      clockTickAudioEl.pause()
+      getTimerEl.textContent = quizTimer
+      finalScoreTextEl.textContent = quizTimer
       questionScreenDivEl.setAttribute('class', 'hide')
       timerDivEl.setAttribute('class', 'hide')
       displayResultDivEl.setAttribute('class', 'hide')
+
+      //if no question is answered, hide the result-expander div.
+      if (answeredQuestions.length == 0) {
+        expanderDivEl.setAttribute('class', 'hide')
+      }
 
       answeredQuestions.forEach(questionAnswer => {
         createQuestion_AnswerCards(
@@ -368,13 +370,11 @@ function countdown() {
       })
 
       endScreenDivEl.setAttribute('class', '')
-
-      finalScoreTextEl.textContent = quizTimer
-      console.log(answeredQuestions)
     }
 
-    //
   }, 1000)
 }
+
+
 
 
