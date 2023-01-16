@@ -1,6 +1,7 @@
 import { allQuestions_Answers } from '../js/questions.js'
 import { quizResult } from '../js/global-class.js'
 
+
 class questionAnswers {
   constructor(
     questionNumber,
@@ -34,7 +35,7 @@ class questionAnswers {
 // console.log(result)
 //#endregion
 
-let quizTimer = 20
+let quizTimer = 75
 let randomizedQuestionsArray
 let questionsCounter = 0
 let answeredQuestions = []
