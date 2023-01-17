@@ -3,36 +3,26 @@ import { quizResult } from '../js/global-class.js'
 let clearBtnEl = document.getElementById('clear')
 let scoreTableEl = document.getElementById('score-table')
 
-
 //get the scores object from local storage
-var objectScores = localStorage.getItem("scores");
-
-console.log(objectScores)
+var allScores = localStorage.getItem("scores");
 
 //stringify it
-var highestScores = JSON.parse(objectScores);
-
-//sort the list so that the highest score appears first
-highestScores.sort(function (a, b) { return a.userScore - b.userScore });
-highestScores.reverse();
-
-console.log(highestScores)
+var allScoresParsed = JSON.parse(allScores);
 
 
-// iterate localStorage
-for (var i = 0; i < localStorage.length; i++) {
-  // set iteration key name
-  var key = localStorage.key(i)
+if (allScoresParsed !== null) {
+  //sort the list so that the highest score appears first
+  allScoresParsed.sort(function (a, b) { return a.userScore - b.userScore });
+  allScoresParsed.reverse();
 
-  // use key name to retrieve the corresponding value
-  if (key.toLocaleLowerCase().includes('score:')) {
-    var value = localStorage.getItem(key)
+
+  // iterate localStorage
+  for (var i = 0; i < allScoresParsed.length; i++) {
+    let result = new quizResult(allScoresParsed[i].userInitial, allScoresParsed[i].userScore, allScoresParsed[i].dateTime)
 
     let intialColumnEl = document.createElement('td')
     let scoreColumnEl = document.createElement('td')
     let dateColumnEl = document.createElement('td')
-
-    var result = JSON.parse(value)
 
     let row = scoreTableEl.insertRow()
 
@@ -44,6 +34,7 @@ for (var i = 0; i < localStorage.length; i++) {
     row.appendChild(scoreColumnEl)
     row.appendChild(dateColumnEl)
   }
+
 }
 
 clearBtnEl.addEventListener('click', function (event) {

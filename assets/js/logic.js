@@ -22,25 +22,13 @@ class questionAnswers {
   }
 }
 
-//#region testing nMap
-// const n = "90AB"
-// const nMap = {
-//   "90AB": ["userInitial", "userScore", new Date().toDateString() + " " + new Date().toLocaleTimeString()],
-//   "90AB": 'res-2',
-//   "90AB": 'res-3'
-// }
-
-
-// const result = nMap[ n ]
-// console.log(result)
-//#endregion
-
-let quizTimer = 75
+let quizTimer = 100
 let randomizedQuestionsArray
 let questionsCounter = 0
 let answeredQuestions = []
-let getTimerEl = document.getElementById('time')
 let answerBtnEl
+
+let getTimerEl = document.getElementById('time')
 let startQuizBtnEl = document.getElementById('start')
 let questionTextEl = document.getElementById('question-title')
 let choicesListEl = document.getElementById('choices')
@@ -55,7 +43,6 @@ var submitBtnEl = document.querySelector('#submit')
 let endScreenDivEl = document.getElementById('end-screen')
 
 startQuizBtnEl.addEventListener('click', countdown)
-
 getTimerEl.textContent = quizTimer
 
 choicesListEl.addEventListener('click', function (event) {
@@ -67,23 +54,23 @@ choicesListEl.addEventListener('click', function (event) {
 
 submitBtnEl.addEventListener('click', showResponse)
 
+//Function show the score
 function showResponse(event) {
   // Prevent default action
   event.preventDefault()
   let initialsTextEl = document.getElementById('initials')
 
-  let newUserScore = {
-    initials: initialsTextEl.value.trim(),
-    userScore: quizTimer,
-    dateTime: new Date().toDateString() + " " + new Date().toLocaleTimeString()
-  }
+  let newResult = new quizResult(initialsTextEl.value.trim(),quizTimer,new Date().toDateString() + " " + new Date().toLocaleTimeString())
 
+  let scoresHistory = JSON.parse(localStorage.getItem("scores")) || []
+  scoresHistory.push(newResult);
+  localStorage.setItem("scores", JSON.stringify(scoresHistory));
 
-  localStorage.setItem("scores", JSON.stringify(newUserScore))
 
   location.href = '././pages/highscores.html'
 }
 
+//Function to randomize each question
 function randomizeArray(arr) {
   var randomArr = []
 
@@ -96,6 +83,7 @@ function randomizeArray(arr) {
   })
 }
 
+//Function to randomize the answers for each question
 function randomizeArrayMap(map) {
   var randomArrMap = []
 
@@ -109,6 +97,7 @@ function randomizeArrayMap(map) {
   })
 }
 
+//Function to create questions, answers and explanation cards when test is complete
 function createQuestion_AnswerCards(
   questionNumber,
   questionTitle,
@@ -199,6 +188,7 @@ function createQuestion_AnswerCards(
   expanderDivEl.appendChild(mainCard)
 }
 
+//Function to set and create randomized questions.
 function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
   if (questionsCounter >= allQuestions_Answers.length) {
   } else {
@@ -274,50 +264,21 @@ function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
 
       setTimeout(function () {
         displayResultDivEl.setAttribute('class', 'hide')
-      }, 2000)
+      }, 300)
 
       answerBtnEl.textContent = answerCounter++ + '. ' + value[0]
       choicesListEl.appendChild(answerBtnEl)
     }
-    
+
   }
 }
 
-//#region TestingCode
-// getSetAllQuestions_Answers()
-
-// function getSetAllQuestions_Answers () {
-//   let randomizedQuestionsArray = randomizeArray(allQuestions_Answers)
-
-//   for (let index = 0; index < randomizedQuestionsArray.length; index++) {
-//     let question = randomizedQuestionsArray[index][0]
-//     let answers = randomizedQuestionsArray[index][1]
-
-//     let randomizedAnswers = randomizeArrayMap(answers)
-//     choicesListEl = document.getElementById('choices')
-
-//     console.log('--------QUESTION--------')
-//     console.log(question)
-//     console.log('-------RANDOMISED ANSWERS---------')
-
-//     for (var [key, value] of randomizedAnswers.entries()) {
-//       console.log(value[0] + ' = ' + value[1])
-//     }
-
-//     choicesListEl = null
-//     console.log('================')
-//   }
-// }
-//#endregion
 
 function playAudio(url) {
   new Audio(url).play()
 }
 
-function pauseAudio(url) {
-  new Audio(url).pause()
-}
-
+//Quiz countdown function
 function countdown() {
   let timerDivEl = document.getElementById('timer')
   randomizedQuestionsArray = randomizeArray(allQuestions_Answers)
@@ -332,7 +293,7 @@ function countdown() {
   )
 
   var timeInterval = setInterval(function () {
-   
+
     getTimerEl.textContent = quizTimer--
 
     if (quizTimer < 10) {
@@ -380,5 +341,29 @@ function countdown() {
 }
 
 
+//#region TestingCode
+// getSetAllQuestions_Answers()
 
+// function getSetAllQuestions_Answers () {
+//   let randomizedQuestionsArray = randomizeArray(allQuestions_Answers)
 
+//   for (let index = 0; index < randomizedQuestionsArray.length; index++) {
+//     let question = randomizedQuestionsArray[index][0]
+//     let answers = randomizedQuestionsArray[index][1]
+
+//     let randomizedAnswers = randomizeArrayMap(answers)
+//     choicesListEl = document.getElementById('choices')
+
+//     console.log('--------QUESTION--------')
+//     console.log(question)
+//     console.log('-------RANDOMISED ANSWERS---------')
+
+//     for (var [key, value] of randomizedAnswers.entries()) {
+//       console.log(value[0] + ' = ' + value[1])
+//     }
+
+//     choicesListEl = null
+//     console.log('================')
+//   }
+// }
+//#endregion

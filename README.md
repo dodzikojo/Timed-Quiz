@@ -36,7 +36,7 @@ export let allQuestions_Answers = [
   ]
 ```
 
-* Each generated question is store as an object based on a define "questionAnswers" class. 
+* Each generated question is store as an object based on a defined "questionAnswers" class. 
     ```javascript
     class questionAnswers {
     constructor (
