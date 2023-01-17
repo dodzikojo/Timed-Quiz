@@ -41,6 +41,8 @@ let expanderDivEl = document.getElementById('result-expander')
 let clockTickAudioEl = document.getElementById('clock-ticker')
 var submitBtnEl = document.querySelector('#submit')
 let endScreenDivEl = document.getElementById('end-screen')
+let progressBarEl = document.getElementById('progress-bar')
+let progressBarContainerDivEl = document.getElementById('progress-bar-container')
 
 startQuizBtnEl.addEventListener('click', countdown)
 getTimerEl.textContent = quizTimer
@@ -51,6 +53,8 @@ choicesListEl.addEventListener('click', function (event) {
   }
   setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter++)
 })
+
+
 
 submitBtnEl.addEventListener('click', showResponse)
 
@@ -188,8 +192,18 @@ function createQuestion_AnswerCards(
   expanderDivEl.appendChild(mainCard)
 }
 
+//function to update the progressbar
+function setProgressBarValue(currentQuestionNumber, totalQuestionsCount){
+  progressBarEl.setAttribute("aria-valuenow", currentQuestionNumber)
+  progressBarEl.setAttribute("aria-valuemax", totalQuestionsCount)
+  var result = (totalQuestionsCount / 100) * currentQuestionNumber
+  console.log(result)
+  progressBarEl.style.width = (currentQuestionNumber / totalQuestionsCount) * 100+"%"
+}
+
 //Function to set and create randomized questions.
 function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
+  setProgressBarValue(questionsCounter, allQuestions_Answers.length)
   if (questionsCounter >= allQuestions_Answers.length) {
   } else {
     let newQuestionAnswer = new questionAnswers()
@@ -205,6 +219,8 @@ function setSingleQuestion_Answers(randomizedQuestionsArray, questionsCounter) {
     let randomizedAnswers = randomizeArrayMap(
       newQuestionAnswer.multipleChoices_Answer
     )
+
+
     choicesListEl = document.getElementById('choices')
 
     questionTextEl.textContent = newQuestionAnswer.questionTitle
@@ -285,12 +301,15 @@ function countdown() {
 
   startScreenDivEl.setAttribute('class', 'hide')
   questionScreenDivEl.setAttribute('class', '')
+  progressBarContainerDivEl.classList.remove('hide')
 
   setSingleQuestion_Answers(
     randomizedQuestionsArray,
     questionsCounter++,
     quizTimer
   )
+
+
 
   var timeInterval = setInterval(function () {
 

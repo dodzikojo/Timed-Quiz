@@ -109,3 +109,7 @@ li:nth-child(odd) {
 .accordion-body {
   padding: 5px !important;
 }
+
+#progress-bar {
+      background-color: #563d7c;
+}
