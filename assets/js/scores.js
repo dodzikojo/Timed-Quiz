@@ -2,7 +2,21 @@ import { quizResult } from '../js/global-class.js'
 
 let clearBtnEl = document.getElementById('clear')
 let scoreTableEl = document.getElementById('score-table')
-const items = { localStorage }
+
+
+//get the scores object from local storage
+var objectScores = localStorage.getItem("scores");
+
+console.log(objectScores)
+
+//stringify it
+var highestScores = JSON.parse(objectScores);
+
+//sort the list so that the highest score appears first
+highestScores.sort(function (a, b) { return a.userScore - b.userScore });
+highestScores.reverse();
+
+console.log(highestScores)
 
 
 // iterate localStorage

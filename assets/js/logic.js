@@ -72,11 +72,14 @@ function showResponse(event) {
   event.preventDefault()
   let initialsTextEl = document.getElementById('initials')
 
-  let newQuizResult = new quizResult(initialsTextEl.value.trim(), quizTimer)
+  let newUserScore = {
+    initials: initialsTextEl.value.trim(),
+    userScore: quizTimer,
+    dateTime: new Date().toDateString() + " " + new Date().toLocaleTimeString()
+  }
 
-  console.log(newQuizResult)
 
-  localStorage.setItem(newQuizResult.id, JSON.stringify(newQuizResult))
+  localStorage.setItem("scores", JSON.stringify(newUserScore))
 
   location.href = '././pages/highscores.html'
 }
